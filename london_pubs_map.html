@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2994d631c59abe37eee29db837c26bdb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+     <div style="
+     position: fixed; 
+     bottom: 50px; left: 50px; width: 150px; height: 220px; 
+     border:2px solid grey; z-index:9999; font-size:14px;
+     background-color:white;
+     padding: 10px;
+     ">
+     &nbsp;<b>Price Legend</b><br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:green"></i>&nbsp;£0<br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:blue"></i>&nbsp;£1<br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:orange"></i>&nbsp;£2<br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:red"></i>&nbsp;£3<br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:purple"></i>&nbsp;£4<br>
+     &nbsp;<i class="fa fa-beer fa-2x" style="color:darkred"></i>&nbsp;£5+<br>
+     </div>
+     
+    
+            <div class="folium-map" id="map_2994d631c59abe37eee29db837c26bdb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2994d631c59abe37eee29db837c26bdb = L.map(
+                "map_2994d631c59abe37eee29db837c26bdb",
+                {
+                    center: [51.5074, -0.1278],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_93e1f34491f450afdffb54319628228f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_93e1f34491f450afdffb54319628228f.addTo(map_2994d631c59abe37eee29db837c26bdb);
+        
+    
+            var marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a = L.markerClusterGroup(
+                {}
+            );
+        
+    
+            var marker_2d522aa7ea85e97b60ba9a031927c09c = L.marker(
+                [51.4477, 0.1994],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_d5375971417befa3f25a54c1c48ddf2c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2d522aa7ea85e97b60ba9a031927c09c.setIcon(icon_d5375971417befa3f25a54c1c48ddf2c);
+        
+    
+        var popup_840aba26bef996a183cbb0f4643cfae0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8a928e32d630428723128683250bad03 = $(`<div id="html_8a928e32d630428723128683250bad03" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Bird In Hand</h4>             <b>Location:</b> Dartford, London<br>             <b>Event Time:</b> Thu @ 20:30<br>             <b>Phone:</b> 1322280139<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> DA1 3EY         </div>         </div>`)[0];
+                popup_840aba26bef996a183cbb0f4643cfae0.setContent(html_8a928e32d630428723128683250bad03);
+            
+        
+
+        marker_2d522aa7ea85e97b60ba9a031927c09c.bindPopup(popup_840aba26bef996a183cbb0f4643cfae0)
+        ;
+
+        
+    
+    
+            var marker_9979fa4c0121ee12de5a9b1dbc28ab10 = L.marker(
+                [51.41095, -0.05695],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_a7f0e89246c1da3ac0b0ad38f9439c37 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9979fa4c0121ee12de5a9b1dbc28ab10.setIcon(icon_a7f0e89246c1da3ac0b0ad38f9439c37);
+        
+    
+        var popup_05b746d9c0aae81816c9b8ecd209a82d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d7999845d6c3c7c0c03607c315ec43e5 = $(`<div id="html_d7999845d6c3c7c0c03607c315ec43e5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Bridge House</h4>             <b>Location:</b> Penge, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8778 2100<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £300<br>             <b>Postal Code:</b> SE20 8RZ         </div>         </div>`)[0];
+                popup_05b746d9c0aae81816c9b8ecd209a82d.setContent(html_d7999845d6c3c7c0c03607c315ec43e5);
+            
+        
+
+        marker_9979fa4c0121ee12de5a9b1dbc28ab10.bindPopup(popup_05b746d9c0aae81816c9b8ecd209a82d)
+        ;
+
+        
+    
+    
+            var marker_efadad839ab93eef326826f9ccbf0bff = L.marker(
+                [51.5625, -0.074],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_13e6bbd5f6a51e21fcd6b3ed41b15b02 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_efadad839ab93eef326826f9ccbf0bff.setIcon(icon_13e6bbd5f6a51e21fcd6b3ed41b15b02);
+        
+    
+        var popup_bb9b60aa4dbd1d23edc4c6cc48694411 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3f05c43387f6d43a01e9a8fc60e3c0a4 = $(`<div id="html_3f05c43387f6d43a01e9a8fc60e3c0a4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Clissold Park Tavern</h4>             <b>Location:</b> Stoke Newington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7226 7770<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £100<br>             <b>Postal Code:</b> N16 9DB         </div>         </div>`)[0];
+                popup_bb9b60aa4dbd1d23edc4c6cc48694411.setContent(html_3f05c43387f6d43a01e9a8fc60e3c0a4);
+            
+        
+
+        marker_efadad839ab93eef326826f9ccbf0bff.bindPopup(popup_bb9b60aa4dbd1d23edc4c6cc48694411)
+        ;
+
+        
+    
+    
+            var marker_246811298eef250573f68db88967fb95 = L.marker(
+                [51.46758, -0.12912],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_3d4dcb2aa4b643a1458350717c0b8ddf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_246811298eef250573f68db88967fb95.setIcon(icon_3d4dcb2aa4b643a1458350717c0b8ddf);
+        
+    
+        var popup_87ae47ace9b72949662766adc16a0b0b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5cc6861efbe47686b1bdd1c2a4520df7 = $(`<div id="html_5cc6861efbe47686b1bdd1c2a4520df7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Coach and Horses</h4>             <b>Location:</b> Clapham, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7622 3815<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SW4 7EX         </div>         </div>`)[0];
+                popup_87ae47ace9b72949662766adc16a0b0b.setContent(html_5cc6861efbe47686b1bdd1c2a4520df7);
+            
+        
+
+        marker_246811298eef250573f68db88967fb95.bindPopup(popup_87ae47ace9b72949662766adc16a0b0b)
+        ;
+
+        
+    
+    
+            var marker_b3809d6b843f73f4122295d732b9b6e2 = L.marker(
+                [51.474, -0.1168],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_66afaa675abbe232b0bbabfd9b01fcfe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_b3809d6b843f73f4122295d732b9b6e2.setIcon(icon_66afaa675abbe232b0bbabfd9b01fcfe);
+        
+    
+        var popup_cac2eae30efdcb29b1a804e1bfbd6cd4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8597fe9908e8a72ecb0a676ec8234592 = $(`<div id="html_8597fe9908e8a72ecb0a676ec8234592" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Craft Beer Co Brixton</h4>             <b>Location:</b> Brixton, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 7274 8383<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SW9 8PA         </div>         </div>`)[0];
+                popup_cac2eae30efdcb29b1a804e1bfbd6cd4.setContent(html_8597fe9908e8a72ecb0a676ec8234592);
+            
+        
+
+        marker_b3809d6b843f73f4122295d732b9b6e2.bindPopup(popup_cac2eae30efdcb29b1a804e1bfbd6cd4)
+        ;
+
+        
+    
+    
+            var marker_6cd3bec592196daf0e414861dbee089f = L.marker(
+                [51.6515, -0.085],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_13d5f54ab5525972535d20ee1c55a923 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_6cd3bec592196daf0e414861dbee089f.setIcon(icon_13d5f54ab5525972535d20ee1c55a923);
+        
+    
+        var popup_5aeaef9e6c0bf14bbc119a5c615cbc2b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d12af123822e792ad07bc9b16ab10929 = $(`<div id="html_d12af123822e792ad07bc9b16ab10929" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Cricketers</h4>             <b>Location:</b> Enfield, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 0208 363 5218<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £20<br>             <b>Postal Code:</b> EN2 6NP         </div>         </div>`)[0];
+                popup_5aeaef9e6c0bf14bbc119a5c615cbc2b.setContent(html_d12af123822e792ad07bc9b16ab10929);
+            
+        
+
+        marker_6cd3bec592196daf0e414861dbee089f.bindPopup(popup_5aeaef9e6c0bf14bbc119a5c615cbc2b)
+        ;
+
+        
+    
+    
+            var marker_94ef3279a36e9aa53536e423cfcc55ba = L.marker(
+                [51.5905, -0.1421],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_367eec48744922918ece2213f9d16362 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_94ef3279a36e9aa53536e423cfcc55ba.setIcon(icon_367eec48744922918ece2213f9d16362);
+        
+    
+        var popup_d7a09cbf5598c35aa0b2980f0c562f08 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0928a0f67b53c26803b9d8632ce544f7 = $(`<div id="html_0928a0f67b53c26803b9d8632ce544f7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Famous Royal Oak</h4>             <b>Location:</b> Muswell Hill, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 020 8444 2504<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £15<br>             <b>Postal Code:</b> N10 3QY         </div>         </div>`)[0];
+                popup_d7a09cbf5598c35aa0b2980f0c562f08.setContent(html_0928a0f67b53c26803b9d8632ce544f7);
+            
+        
+
+        marker_94ef3279a36e9aa53536e423cfcc55ba.bindPopup(popup_d7a09cbf5598c35aa0b2980f0c562f08)
+        ;
+
+        
+    
+    
+            var marker_02f19369b395129e3254735e3598c747 = L.marker(
+                [51.49742, -0.0528],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_3b408b9915615457e7e4a697ff7d01b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_02f19369b395129e3254735e3598c747.setIcon(icon_3b408b9915615457e7e4a697ff7d01b7);
+        
+    
+        var popup_04f4b7773077f549d437374379e3ae82 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1173c665dbb0514503a209bfddc07c07 = $(`<div id="html_1173c665dbb0514503a209bfddc07c07" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Gosnells Of London</h4>             <b>Location:</b> Bermondsey, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> N/A<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £100<br>             <b>Postal Code:</b> SE16 3RA         </div>         </div>`)[0];
+                popup_04f4b7773077f549d437374379e3ae82.setContent(html_1173c665dbb0514503a209bfddc07c07);
+            
+        
+
+        marker_02f19369b395129e3254735e3598c747.bindPopup(popup_04f4b7773077f549d437374379e3ae82)
+        ;
+
+        
+    
+    
+            var marker_0981902214417e603a9046317816b7bf = L.marker(
+                [51.49248333333333, -0.2204],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_6a5a725a9a6c6b4cc0d9685836c435ca = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0981902214417e603a9046317816b7bf.setIcon(icon_6a5a725a9a6c6b4cc0d9685836c435ca);
+        
+    
+        var popup_2bba8e5e83bd3ac5bb1f1e93e5e4b53f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_16eabd329764a182b43fca952f428d55 = $(`<div id="html_16eabd329764a182b43fca952f428d55" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Hop Poles</h4>             <b>Location:</b> Hammersmith, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 020 8748 1411<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £30<br>             <b>Postal Code:</b> W6 9HR         </div>         </div>`)[0];
+                popup_2bba8e5e83bd3ac5bb1f1e93e5e4b53f.setContent(html_16eabd329764a182b43fca952f428d55);
+            
+        
+
+        marker_0981902214417e603a9046317816b7bf.bindPopup(popup_2bba8e5e83bd3ac5bb1f1e93e5e4b53f)
+        ;
+
+        
+    
+    
+            var marker_211fd53d848241d88b2bf5e3edfa5c0b = L.marker(
+                [51.507525, -0.205],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_395a9b91b4d378c9edc13a58e0a88d65 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_211fd53d848241d88b2bf5e3edfa5c0b.setIcon(icon_395a9b91b4d378c9edc13a58e0a88d65);
+        
+    
+        var popup_758ec0cc333cd5d3e628db34cc0b4a6c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ed183d4d8ea7632bf8f84c704b3552e1 = $(`<div id="html_ed183d4d8ea7632bf8f84c704b3552e1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Italian Job</h4>             <b>Location:</b> Notting Hill, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7229 5963<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> W11 1HE         </div>         </div>`)[0];
+                popup_758ec0cc333cd5d3e628db34cc0b4a6c.setContent(html_ed183d4d8ea7632bf8f84c704b3552e1);
+            
+        
+
+        marker_211fd53d848241d88b2bf5e3edfa5c0b.bindPopup(popup_758ec0cc333cd5d3e628db34cc0b4a6c)
+        ;
+
+        
+    
+    
+            var marker_a3f7b282fb7c3af710fe525c1271d272 = L.marker(
+                [51.4876, -0.1694],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_eb4338b959b7e573b7183224a1273f30 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a3f7b282fb7c3af710fe525c1271d272.setIcon(icon_eb4338b959b7e573b7183224a1273f30);
+        
+    
+        var popup_c06a4a35dd81d957e8d774bbd23a2875 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3f9f5eed26350429dfb13031025d27c9 = $(`<div id="html_3f9f5eed26350429dfb13031025d27c9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Kings Arms</h4>             <b>Location:</b> Chelsea, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 2073515043<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SW10 9PN         </div>         </div>`)[0];
+                popup_c06a4a35dd81d957e8d774bbd23a2875.setContent(html_3f9f5eed26350429dfb13031025d27c9);
+            
+        
+
+        marker_a3f7b282fb7c3af710fe525c1271d272.bindPopup(popup_c06a4a35dd81d957e8d774bbd23a2875)
+        ;
+
+        
+    
+    
+            var marker_9849bf878624556bdd1776a98e6d22c5 = L.marker(
+                [51.53669, -0.0944],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_c3059233ff6fe2bee94aa4a086532189 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_9849bf878624556bdd1776a98e6d22c5.setIcon(icon_c3059233ff6fe2bee94aa4a086532189);
+        
+    
+        var popup_e6fc3315a3a2f805f0fc5037ab14debe = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f2bf0f5c133de3a8610d2428ce0d4228 = $(`<div id="html_f2bf0f5c133de3a8610d2428ce0d4228" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>LDN Craft</h4>             <b>Location:</b> Angel, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 7521610863<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N1 0PS         </div>         </div>`)[0];
+                popup_e6fc3315a3a2f805f0fc5037ab14debe.setContent(html_f2bf0f5c133de3a8610d2428ce0d4228);
+            
+        
+
+        marker_9849bf878624556bdd1776a98e6d22c5.bindPopup(popup_e6fc3315a3a2f805f0fc5037ab14debe)
+        ;
+
+        
+    
+    
+            var marker_5f07c9b38ed4f4d7b0dd4bbeca56a7e6 = L.marker(
+                [51.58758, -0.02048],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_36069d61d2dd253e9e795ec0c70e0209 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_5f07c9b38ed4f4d7b0dd4bbeca56a7e6.setIcon(icon_36069d61d2dd253e9e795ec0c70e0209);
+        
+    
+        var popup_7251e571480455d97e5a97ce4c83b3b4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9fe1446c025058e543a50684cefc2551 = $(`<div id="html_9fe1446c025058e543a50684cefc2551" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Lord Raglan</h4>             <b>Location:</b> Walthamstow, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 0208 520 8483<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £40<br>             <b>Postal Code:</b> E17 9HX         </div>         </div>`)[0];
+                popup_7251e571480455d97e5a97ce4c83b3b4.setContent(html_9fe1446c025058e543a50684cefc2551);
+            
+        
+
+        marker_5f07c9b38ed4f4d7b0dd4bbeca56a7e6.bindPopup(popup_7251e571480455d97e5a97ce4c83b3b4)
+        ;
+
+        
+    
+    
+            var marker_e21b33c542dd0d6cb64b749d6dd5cd90 = L.marker(
+                [51.53669, -0.0944],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_a23e030aa674efb8fa7383f6e8bea19f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_e21b33c542dd0d6cb64b749d6dd5cd90.setIcon(icon_a23e030aa674efb8fa7383f6e8bea19f);
+        
+    
+        var popup_e7e2d40ae1dd9151159e855c58c6aa3b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f16a067c3accf65e8ea62cd483df3740 = $(`<div id="html_f16a067c3accf65e8ea62cd483df3740" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Lucky Voice Islington</h4>             <b>Location:</b> Angel, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 020 7354 6280<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N1 1RG         </div>         </div>`)[0];
+                popup_e7e2d40ae1dd9151159e855c58c6aa3b.setContent(html_f16a067c3accf65e8ea62cd483df3740);
+            
+        
+
+        marker_e21b33c542dd0d6cb64b749d6dd5cd90.bindPopup(popup_e7e2d40ae1dd9151159e855c58c6aa3b)
+        ;
+
+        
+    
+    
+            var marker_f686d261a16cd21e688c6b1430db3054 = L.marker(
+                [51.48162, -0.1276],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_11772f2b5388e4924a49e80340996d1c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_f686d261a16cd21e688c6b1430db3054.setIcon(icon_11772f2b5388e4924a49e80340996d1c);
+        
+    
+        var popup_997e1114e280baf005c477d6581bc9aa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_22a11cc8697fa8d494130300ef5f34dc = $(`<div id="html_22a11cc8697fa8d494130300ef5f34dc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Mondo Tap House</h4>             <b>Location:</b> Battersea, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 020 7720 0782<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £30<br>             <b>Postal Code:</b> SW8 4UG         </div>         </div>`)[0];
+                popup_997e1114e280baf005c477d6581bc9aa.setContent(html_22a11cc8697fa8d494130300ef5f34dc);
+            
+        
+
+        marker_f686d261a16cd21e688c6b1430db3054.bindPopup(popup_997e1114e280baf005c477d6581bc9aa)
+        ;
+
+        
+    
+    
+            var marker_95e9a64c3f7da7f81a4ae7528717edc2 = L.marker(
+                [51.47153333333333, -0.2963666666666666],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_0543b4a61820db6ac860570191067a6a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_95e9a64c3f7da7f81a4ae7528717edc2.setIcon(icon_0543b4a61820db6ac860570191067a6a);
+        
+    
+        var popup_5a5bc448c456725fe97062ebf435f66f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_238019feb7ae308e54237f968605c360 = $(`<div id="html_238019feb7ae308e54237f968605c360" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Pitcher and Piano Richmond</h4>             <b>Location:</b> Richmond, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> N/A<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> TW9 1TQ         </div>         </div>`)[0];
+                popup_5a5bc448c456725fe97062ebf435f66f.setContent(html_238019feb7ae308e54237f968605c360);
+            
+        
+
+        marker_95e9a64c3f7da7f81a4ae7528717edc2.bindPopup(popup_5a5bc448c456725fe97062ebf435f66f)
+        ;
+
+        
+    
+    
+            var marker_cf8807b3031804ffa6ff52c88c2195b8 = L.marker(
+                [51.44696666666667, -0.0416666666666666],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_004f6bd73fea213f59494aac98540f9c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_cf8807b3031804ffa6ff52c88c2195b8.setIcon(icon_004f6bd73fea213f59494aac98540f9c);
+        
+    
+        var popup_e6ae389bbd237cf638aff838bd516604 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_74a10b878b0887001dc422344b8cea59 = $(`<div id="html_74a10b878b0887001dc422344b8cea59" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Railway Telegraph</h4>             <b>Location:</b> Forest Hill, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 6995 0331<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SE23 1BS         </div>         </div>`)[0];
+                popup_e6ae389bbd237cf638aff838bd516604.setContent(html_74a10b878b0887001dc422344b8cea59);
+            
+        
+
+        marker_cf8807b3031804ffa6ff52c88c2195b8.bindPopup(popup_e6ae389bbd237cf638aff838bd516604)
+        ;
+
+        
+    
+    
+            var marker_94fa0e5b2d9a447eea36776acf30bd25 = L.marker(
+                [51.49874615384616, -0.0930384615384615],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_a6ea049301089b2fe0c659e86a38de52 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_94fa0e5b2d9a447eea36776acf30bd25.setIcon(icon_a6ea049301089b2fe0c659e86a38de52);
+        
+    
+        var popup_78c235be9da174923c6701924e616dcc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3c9d2ff9ef41178136da7da025d92a74 = $(`<div id="html_3c9d2ff9ef41178136da7da025d92a74" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Roxy Bar and Screen</h4>             <b>Location:</b> Borough, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 7407 4057<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> SE1 1LB         </div>         </div>`)[0];
+                popup_78c235be9da174923c6701924e616dcc.setContent(html_3c9d2ff9ef41178136da7da025d92a74);
+            
+        
+
+        marker_94fa0e5b2d9a447eea36776acf30bd25.bindPopup(popup_78c235be9da174923c6701924e616dcc)
+        ;
+
+        
+    
+    
+            var marker_e053fd686e914ecebdeb581ea8d29988 = L.marker(
+                [51.5394, -0.0414],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_dcda048fa91976abf779b806ad6130e9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_e053fd686e914ecebdeb581ea8d29988.setIcon(icon_dcda048fa91976abf779b806ad6130e9);
+        
+    
+        var popup_8cbce1251ebbb8ca8680143bc28d88ca = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_464747e4b877bce91d1a6e0c4d6bf40f = $(`<div id="html_464747e4b877bce91d1a6e0c4d6bf40f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Royal Inn On The Park</h4>             <b>Location:</b> Hackney, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 8985 3321<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> E9 7HJ         </div>         </div>`)[0];
+                popup_8cbce1251ebbb8ca8680143bc28d88ca.setContent(html_464747e4b877bce91d1a6e0c4d6bf40f);
+            
+        
+
+        marker_e053fd686e914ecebdeb581ea8d29988.bindPopup(popup_8cbce1251ebbb8ca8680143bc28d88ca)
+        ;
+
+        
+    
+    
+            var marker_a33f28fe1fb8c6956c47ebf61c6dd5c5 = L.marker(
+                [51.5491, -0.1205142857142857],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_7179483ca5f356daafbdd7fd3fc31c6b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a33f28fe1fb8c6956c47ebf61c6dd5c5.setIcon(icon_7179483ca5f356daafbdd7fd3fc31c6b);
+        
+    
+        var popup_dbd184f79ae2c140fb48a70f36af9a8b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_53db80fa35b7950c671e0e46308d5c71 = $(`<div id="html_53db80fa35b7950c671e0e46308d5c71" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Shillibeer's Bar and Grill</h4>             <b>Location:</b> Islington, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 3218 0083<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N7 9EF         </div>         </div>`)[0];
+                popup_dbd184f79ae2c140fb48a70f36af9a8b.setContent(html_53db80fa35b7950c671e0e46308d5c71);
+            
+        
+
+        marker_a33f28fe1fb8c6956c47ebf61c6dd5c5.bindPopup(popup_dbd184f79ae2c140fb48a70f36af9a8b)
+        ;
+
+        
+    
+    
+            var marker_0626d80aa1e22a47348839fe328f4db1 = L.marker(
+                [51.54194444444445, -0.1931888888888888],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_9366da85da7f7e26be519a96d9d022ad = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0626d80aa1e22a47348839fe328f4db1.setIcon(icon_9366da85da7f7e26be519a96d9d022ad);
+        
+    
+        var popup_beaff8a61d831c37645a95fe97f78cff = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_337152df65be334c290ac0f17b5af91d = $(`<div id="html_337152df65be334c290ac0f17b5af91d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Sir Colin Campbell Music Quiz</h4>             <b>Location:</b> Kilburn, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7693 5443<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £40<br>             <b>Postal Code:</b> NW6 2BY         </div>         </div>`)[0];
+                popup_beaff8a61d831c37645a95fe97f78cff.setContent(html_337152df65be334c290ac0f17b5af91d);
+            
+        
+
+        marker_0626d80aa1e22a47348839fe328f4db1.bindPopup(popup_beaff8a61d831c37645a95fe97f78cff)
+        ;
+
+        
+    
+    
+            var marker_39f6bce3dd5074a381ba05f5dd4af94a = L.marker(
+                [51.5693, -0.1069],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_418bcf86782a3d630a6c183c9c0637d3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_39f6bce3dd5074a381ba05f5dd4af94a.setIcon(icon_418bcf86782a3d630a6c183c9c0637d3);
+        
+    
+        var popup_d6028a9622b56839e07f2360e53338ab = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_991810db70e0fdb28ef23c73808503a7 = $(`<div id="html_991810db70e0fdb28ef23c73808503a7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Stapleton Tavern</h4>             <b>Location:</b> Crouch Hill, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7272 5395<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N4 4AU         </div>         </div>`)[0];
+                popup_d6028a9622b56839e07f2360e53338ab.setContent(html_991810db70e0fdb28ef23c73808503a7);
+            
+        
+
+        marker_39f6bce3dd5074a381ba05f5dd4af94a.bindPopup(popup_d6028a9622b56839e07f2360e53338ab)
+        ;
+
+        
+    
+    
+            var marker_94f2a299b34ce870c62940698af22c8d = L.marker(
+                [51.5333, 0.0833],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_e6371ef71b2014a5c1e1a52093955e2a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_94f2a299b34ce870c62940698af22c8d.setIcon(icon_e6371ef71b2014a5c1e1a52093955e2a);
+        
+    
+        var popup_255e7e04b9cc0eb254d6273bac58ae0f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1e7d9cea364428d5d8dd8800234fc05a = $(`<div id="html_1e7d9cea364428d5d8dd8800234fc05a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Acorn</h4>             <b>Location:</b> Barking, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 3673 2462<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> IG11 8UF         </div>         </div>`)[0];
+                popup_255e7e04b9cc0eb254d6273bac58ae0f.setContent(html_1e7d9cea364428d5d8dd8800234fc05a);
+            
+        
+
+        marker_94f2a299b34ce870c62940698af22c8d.bindPopup(popup_255e7e04b9cc0eb254d6273bac58ae0f)
+        ;
+
+        
+    
+    
+            var marker_6600758c0850bbabbedcfd4b5384c76e = L.marker(
+                [51.47153333333333, -0.2963666666666666],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_abec4943712416c26d1fd31e4b8fdcdf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_6600758c0850bbabbedcfd4b5384c76e.setIcon(icon_abec4943712416c26d1fd31e4b8fdcdf);
+        
+    
+        var popup_60464b445a9d939d9dc81868a9fc5e72 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1fc4948326f5a8d6426fab1bdcb37f9c = $(`<div id="html_1fc4948326f5a8d6426fab1bdcb37f9c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Angel and Crown</h4>             <b>Location:</b> Richmond, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 8940 1508<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> TW9 1JL         </div>         </div>`)[0];
+                popup_60464b445a9d939d9dc81868a9fc5e72.setContent(html_1fc4948326f5a8d6426fab1bdcb37f9c);
+            
+        
+
+        marker_6600758c0850bbabbedcfd4b5384c76e.bindPopup(popup_60464b445a9d939d9dc81868a9fc5e72)
+        ;
+
+        
+    
+    
+            var marker_22585ada51b7aa99b9de308e47a0ddf2 = L.marker(
+                [51.5693, -0.1069],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_11bf98c78cf68e3f9acb6351a10fb50b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_22585ada51b7aa99b9de308e47a0ddf2.setIcon(icon_11bf98c78cf68e3f9acb6351a10fb50b);
+        
+    
+        var popup_05a7e88b41a3b7e8bab0a0d215d59bf0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_1d319ed1626d5ff0f2b689cd4ff36b7a = $(`<div id="html_1d319ed1626d5ff0f2b689cd4ff36b7a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Beaconsfield</h4>             <b>Location:</b> Manor House, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 020 8826 5200<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N4 1DZ         </div>         </div>`)[0];
+                popup_05a7e88b41a3b7e8bab0a0d215d59bf0.setContent(html_1d319ed1626d5ff0f2b689cd4ff36b7a);
+            
+        
+
+        marker_22585ada51b7aa99b9de308e47a0ddf2.bindPopup(popup_05a7e88b41a3b7e8bab0a0d215d59bf0)
+        ;
+
+        
+    
+    
+            var marker_543dcee302d5ef507184b851998ccaa6 = L.marker(
+                [51.3915, -0.2982],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_641fc31febbef1653e730e00123225c1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_543dcee302d5ef507184b851998ccaa6.setIcon(icon_641fc31febbef1653e730e00123225c1);
+        
+    
+        var popup_9f2fb73286189e91d0d97d9723edb981 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_77363eb8cbf7576c208bda8a34af7ef2 = $(`<div id="html_77363eb8cbf7576c208bda8a34af7ef2" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Berrylands</h4>             <b>Location:</b> Surbiton, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8399 4043<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> KT5 8LS         </div>         </div>`)[0];
+                popup_9f2fb73286189e91d0d97d9723edb981.setContent(html_77363eb8cbf7576c208bda8a34af7ef2);
+            
+        
+
+        marker_543dcee302d5ef507184b851998ccaa6.bindPopup(popup_9f2fb73286189e91d0d97d9723edb981)
+        ;
+
+        
+    
+    
+            var marker_0745d7581a1461602609399f8f4a38c4 = L.marker(
+                [51.46099999999999, -0.0352],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_bf2a3bfc228cff2e7315b248dfaa8b2d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0745d7581a1461602609399f8f4a38c4.setIcon(icon_bf2a3bfc228cff2e7315b248dfaa8b2d);
+        
+    
+        var popup_d0b91e7c111ea967e95b2b58173cf9af = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5ba6c98c3ab336c23379dab90b8edfa9 = $(`<div id="html_5ba6c98c3ab336c23379dab90b8edfa9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Brockley Jack</h4>             <b>Location:</b> Brockley, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8699 3966<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> SE4 2DH         </div>         </div>`)[0];
+                popup_d0b91e7c111ea967e95b2b58173cf9af.setContent(html_5ba6c98c3ab336c23379dab90b8edfa9);
+            
+        
+
+        marker_0745d7581a1461602609399f8f4a38c4.bindPopup(popup_d0b91e7c111ea967e95b2b58173cf9af)
+        ;
+
+        
+    
+    
+            var marker_4b431cd73d0eb93f1f1880efe304cff0 = L.marker(
+                [51.507525, -0.205],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_53020a76758e60289bc63b276fbbebc7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_4b431cd73d0eb93f1f1880efe304cff0.setIcon(icon_53020a76758e60289bc63b276fbbebc7);
+        
+    
+        var popup_9c84aac35c85cfe3545a257ce9f4af1c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_03d0fddb1a3eaf24111225459edd49cb = $(`<div id="html_03d0fddb1a3eaf24111225459edd49cb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Castle Portobello</h4>             <b>Location:</b> Ladbroke Grove, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 7221 7103<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> W11 1LU         </div>         </div>`)[0];
+                popup_9c84aac35c85cfe3545a257ce9f4af1c.setContent(html_03d0fddb1a3eaf24111225459edd49cb);
+            
+        
+
+        marker_4b431cd73d0eb93f1f1880efe304cff0.bindPopup(popup_9c84aac35c85cfe3545a257ce9f4af1c)
+        ;
+
+        
+    
+    
+            var marker_736f03576f85ab22df12a6207b731612 = L.marker(
+                [51.60055, -0.1943],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_75186bee6fa7eddfdcf3b220d3a34732 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_736f03576f85ab22df12a6207b731612.setIcon(icon_75186bee6fa7eddfdcf3b220d3a34732);
+        
+    
+        var popup_c2f36653385be2c56752f2736b28a216 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6e60307b8f4917ed29f942f20f4c56b1 = $(`<div id="html_6e60307b8f4917ed29f942f20f4c56b1" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Catcher In The Rye</h4>             <b>Location:</b> Finchley, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 2083434369<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N3 1DP         </div>         </div>`)[0];
+                popup_c2f36653385be2c56752f2736b28a216.setContent(html_6e60307b8f4917ed29f942f20f4c56b1);
+            
+        
+
+        marker_736f03576f85ab22df12a6207b731612.bindPopup(popup_c2f36653385be2c56752f2736b28a216)
+        ;
+
+        
+    
+    
+            var marker_0e4b229846d0671fe3d97f4a57069e98 = L.marker(
+                [51.38595, -0.2898],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_697b7f25db3bac8fc224fd0891b79920 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0e4b229846d0671fe3d97f4a57069e98.setIcon(icon_697b7f25db3bac8fc224fd0891b79920);
+        
+    
+        var popup_a9589d50f0b64cf735d961bb565371c9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c15bc9fffdc0228e7b2e050d4478e07c = $(`<div id="html_c15bc9fffdc0228e7b2e050d4478e07c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Copper Kettle</h4>             <b>Location:</b> Surbiton, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> N/A<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> KT6 5LX         </div>         </div>`)[0];
+                popup_a9589d50f0b64cf735d961bb565371c9.setContent(html_c15bc9fffdc0228e7b2e050d4478e07c);
+            
+        
+
+        marker_0e4b229846d0671fe3d97f4a57069e98.bindPopup(popup_a9589d50f0b64cf735d961bb565371c9)
+        ;
+
+        
+    
+    
+            var marker_5b0ce50e167fc170a91966d5384d84f6 = L.marker(
+                [51.548, -0.0629],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_d975a7cbac176db3a6b8c88a58cab0dd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5b0ce50e167fc170a91966d5384d84f6.setIcon(icon_d975a7cbac176db3a6b8c88a58cab0dd);
+        
+    
+        var popup_f26534a1674ebae8f00431e101fd50aa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ff16d5c5277ce8dfae306b01507579bd = $(`<div id="html_ff16d5c5277ce8dfae306b01507579bd" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Crown</h4>             <b>Location:</b> Hackney, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7403 0123<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> E8 1HP         </div>         </div>`)[0];
+                popup_f26534a1674ebae8f00431e101fd50aa.setContent(html_ff16d5c5277ce8dfae306b01507579bd);
+            
+        
+
+        marker_5b0ce50e167fc170a91966d5384d84f6.bindPopup(popup_f26534a1674ebae8f00431e101fd50aa)
+        ;
+
+        
+    
+    
+            var marker_966a4a5b2e8daea4f74faa9c257ce526 = L.marker(
+                [51.4927, -0.258],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_f04dea148f27a14486caed37e368de4d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_966a4a5b2e8daea4f74faa9c257ce526.setIcon(icon_f04dea148f27a14486caed37e368de4d);
+        
+    
+        var popup_a49dcfea832e81c649c5e3aa16919e51 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8c3b8e88ede8542a53c17e35f0a59f00 = $(`<div id="html_8c3b8e88ede8542a53c17e35f0a59f00" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Crown and Anchor</h4>             <b>Location:</b> Chiswick, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8742 7466<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> W4 5TA         </div>         </div>`)[0];
+                popup_a49dcfea832e81c649c5e3aa16919e51.setContent(html_8c3b8e88ede8542a53c17e35f0a59f00);
+            
+        
+
+        marker_966a4a5b2e8daea4f74faa9c257ce526.bindPopup(popup_a49dcfea832e81c649c5e3aa16919e51)
+        ;
+
+        
+    
+    
+            var marker_2fddcc9e3c5da815563fed88eccdc507 = L.marker(
+                [51.49248333333333, -0.2204],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_0b84398528e048120fc3c122accaff91 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_2fddcc9e3c5da815563fed88eccdc507.setIcon(icon_0b84398528e048120fc3c122accaff91);
+        
+    
+        var popup_149819ea01b554067285eecedde5a6b5 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a8d2b8e666950cec4622df7f553cb698 = $(`<div id="html_a8d2b8e666950cec4622df7f553cb698" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Duchess</h4>             <b>Location:</b> Hammersmith, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 2087489128<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> W6 0XF         </div>         </div>`)[0];
+                popup_149819ea01b554067285eecedde5a6b5.setContent(html_a8d2b8e666950cec4622df7f553cb698);
+            
+        
+
+        marker_2fddcc9e3c5da815563fed88eccdc507.bindPopup(popup_149819ea01b554067285eecedde5a6b5)
+        ;
+
+        
+    
+    
+            var marker_46d611d2c10ad7e6e11481fc1ea87984 = L.marker(
+                [51.5176, -0.1612],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_e6776943eabd84f00a8e209ccca200ed = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_46d611d2c10ad7e6e11481fc1ea87984.setIcon(icon_e6776943eabd84f00a8e209ccca200ed);
+        
+    
+        var popup_4dc6e878c62c2f2faa682e86a5011173 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f0614571db195eaa8c3175df5464c406 = $(`<div id="html_f0614571db195eaa8c3175df5464c406" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Duke Of York</h4>             <b>Location:</b> Marylebone, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 72587418<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> W1H 5HT         </div>         </div>`)[0];
+                popup_4dc6e878c62c2f2faa682e86a5011173.setContent(html_f0614571db195eaa8c3175df5464c406);
+            
+        
+
+        marker_46d611d2c10ad7e6e11481fc1ea87984.bindPopup(popup_4dc6e878c62c2f2faa682e86a5011173)
+        ;
+
+        
+    
+    
+            var marker_d416015acfc597da9b33ffd3b3efc9aa = L.marker(
+                [51.49874615384616, -0.0930384615384615],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_31e0f3b7085f552cfe957efdd1d99516 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d416015acfc597da9b33ffd3b3efc9aa.setIcon(icon_31e0f3b7085f552cfe957efdd1d99516);
+        
+    
+        var popup_64b61279c9cbdbf76e0952da3c770475 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5cde6ed9d7973fb0d3024b006d7ffdd0 = $(`<div id="html_5cde6ed9d7973fb0d3024b006d7ffdd0" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Golden Hinde</h4>             <b>Location:</b> Pickfords Wharf, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7403 0123<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SE1 9DG         </div>         </div>`)[0];
+                popup_64b61279c9cbdbf76e0952da3c770475.setContent(html_5cde6ed9d7973fb0d3024b006d7ffdd0);
+            
+        
+
+        marker_d416015acfc597da9b33ffd3b3efc9aa.bindPopup(popup_64b61279c9cbdbf76e0952da3c770475)
+        ;
+
+        
+    
+    
+            var marker_31b1b1473d2dbeae3383d4fc23d37de6 = L.marker(
+                [51.4927, -0.258],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_83716e038501cf02248285c34ad7463d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_31b1b1473d2dbeae3383d4fc23d37de6.setIcon(icon_83716e038501cf02248285c34ad7463d);
+        
+    
+        var popup_80d91852b41eae9a087448e4a6ee7178 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0c963ef7aad7fff28f535154dcaf7b78 = $(`<div id="html_0c963ef7aad7fff28f535154dcaf7b78" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Gunnersbury</h4>             <b>Location:</b> Chiswick, London<br>             <b>Event Time:</b> Thu @ 18:30<br>             <b>Phone:</b> 020 8742 7466<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> W4 5RP         </div>         </div>`)[0];
+                popup_80d91852b41eae9a087448e4a6ee7178.setContent(html_0c963ef7aad7fff28f535154dcaf7b78);
+            
+        
+
+        marker_31b1b1473d2dbeae3383d4fc23d37de6.bindPopup(popup_80d91852b41eae9a087448e4a6ee7178)
+        ;
+
+        
+    
+    
+            var marker_b0f9e886aaa01a21c24e86e250a42dd3 = L.marker(
+                [51.53669, -0.0944],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_a7b33d35ca750340f40e1875b7764be6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b0f9e886aaa01a21c24e86e250a42dd3.setIcon(icon_a7b33d35ca750340f40e1875b7764be6);
+        
+    
+        var popup_5bb65aacdb710bd12ee49ee070b7db13 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_461a5fcb939d0b23c04a829b114230dc = $(`<div id="html_461a5fcb939d0b23c04a829b114230dc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Hanbury Arms</h4>             <b>Location:</b> Islington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7288 2222<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N1 7DU         </div>         </div>`)[0];
+                popup_5bb65aacdb710bd12ee49ee070b7db13.setContent(html_461a5fcb939d0b23c04a829b114230dc);
+            
+        
+
+        marker_b0f9e886aaa01a21c24e86e250a42dd3.bindPopup(popup_5bb65aacdb710bd12ee49ee070b7db13)
+        ;
+
+        
+    
+    
+            var marker_a3c26a2cce2db21ee8605ffad0e7b94c = L.marker(
+                [51.5491, -0.1205142857142857],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_ced91204be818680e363b895c8cf6bbf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_a3c26a2cce2db21ee8605ffad0e7b94c.setIcon(icon_ced91204be818680e363b895c8cf6bbf);
+        
+    
+        var popup_749204d2a8cd597891d3ded3c6f1cbea = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_54fada8665802323fd9d0a9484ba823e = $(`<div id="html_54fada8665802323fd9d0a9484ba823e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Hercules</h4>             <b>Location:</b> Holloway Road, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7281 6663<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £250<br>             <b>Postal Code:</b> N7 6JA         </div>         </div>`)[0];
+                popup_749204d2a8cd597891d3ded3c6f1cbea.setContent(html_54fada8665802323fd9d0a9484ba823e);
+            
+        
+
+        marker_a3c26a2cce2db21ee8605ffad0e7b94c.bindPopup(popup_749204d2a8cd597891d3ded3c6f1cbea)
+        ;
+
+        
+    
+    
+            var marker_f394bf343a87001f9c60f82e46a82da0 = L.marker(
+                [51.5481, 0.026475],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_a5ab4a29b919c9f62b10923672085729 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_f394bf343a87001f9c60f82e46a82da0.setIcon(icon_a5ab4a29b919c9f62b10923672085729);
+        
+    
+        var popup_ad8501c3679146dcccc41ac4a3540cf9 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_6379d38ede9c1958dcc1081e0f596f33 = $(`<div id="html_6379d38ede9c1958dcc1081e0f596f33" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Holly Tree</h4>             <b>Location:</b> Forest Gate, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 020 8221 9830<br>             <b>Price:</b> £0.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> E7 0DZ         </div>         </div>`)[0];
+                popup_ad8501c3679146dcccc41ac4a3540cf9.setContent(html_6379d38ede9c1958dcc1081e0f596f33);
+            
+        
+
+        marker_f394bf343a87001f9c60f82e46a82da0.bindPopup(popup_ad8501c3679146dcccc41ac4a3540cf9)
+        ;
+
+        
+    
+    
+            var marker_be1f11e7500c28c6bf86d36dad2b79e5 = L.marker(
+                [51.5625, -0.074],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_bddf267e4f868b26c3b1b54479f6c433 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_be1f11e7500c28c6bf86d36dad2b79e5.setIcon(icon_bddf267e4f868b26c3b1b54479f6c433);
+        
+    
+        var popup_f1264c9ebc27d5c6d66aa4bb52412a79 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d06a80c48887346d6aaa62eaff1a5e2e = $(`<div id="html_d06a80c48887346d6aaa62eaff1a5e2e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Leconfield Pub</h4>             <b>Location:</b> Stoke Newington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7354 2791<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N16 9BU         </div>         </div>`)[0];
+                popup_f1264c9ebc27d5c6d66aa4bb52412a79.setContent(html_d06a80c48887346d6aaa62eaff1a5e2e);
+            
+        
+
+        marker_be1f11e7500c28c6bf86d36dad2b79e5.bindPopup(popup_f1264c9ebc27d5c6d66aa4bb52412a79)
+        ;
+
+        
+    
+    
+            var marker_0644ec51ccd1128c976ee7a5a1f03c10 = L.marker(
+                [51.470175, -0.060325],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_b6ec3e41d6564b1443ba33287e09eebe = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0644ec51ccd1128c976ee7a5a1f03c10.setIcon(icon_b6ec3e41d6564b1443ba33287e09eebe);
+        
+    
+        var popup_486f230f538dc2eeb3d764ec98f063f0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d684ac7ce703cde637e0345c03debd95 = $(`<div id="html_d684ac7ce703cde637e0345c03debd95" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Old Nun's Head</h4>             <b>Location:</b> Nunhead, London<br>             <b>Event Time:</b> Thu @ 20:15<br>             <b>Phone:</b> 020 7639 4007<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £100<br>             <b>Postal Code:</b> SE15 3QQ         </div>         </div>`)[0];
+                popup_486f230f538dc2eeb3d764ec98f063f0.setContent(html_d684ac7ce703cde637e0345c03debd95);
+            
+        
+
+        marker_0644ec51ccd1128c976ee7a5a1f03c10.bindPopup(popup_486f230f538dc2eeb3d764ec98f063f0)
+        ;
+
+        
+    
+    
+            var marker_9f5c9a64d37b997446f35df23d0a0f56 = L.marker(
+                [51.505, -0.2211],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_497cfe7fff20b087cc4b73a0256ffba5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9f5c9a64d37b997446f35df23d0a0f56.setIcon(icon_497cfe7fff20b087cc4b73a0256ffba5);
+        
+    
+        var popup_cb552a337f84f9e0d4e93c3b4e34eedc = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_626fb52928c67353de00e42f0fedea6b = $(`<div id="html_626fb52928c67353de00e42f0fedea6b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Orchard</h4>             <b>Location:</b> Shepherds Bush, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8746 7800<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £100<br>             <b>Postal Code:</b> W12 9BP         </div>         </div>`)[0];
+                popup_cb552a337f84f9e0d4e93c3b4e34eedc.setContent(html_626fb52928c67353de00e42f0fedea6b);
+            
+        
+
+        marker_9f5c9a64d37b997446f35df23d0a0f56.bindPopup(popup_cb552a337f84f9e0d4e93c3b4e34eedc)
+        ;
+
+        
+    
+    
+            var marker_b4d46a58bfa4d36a718da9d795f9af52 = L.marker(
+                [51.52988181818182, -0.1471818181818182],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_ca782c0ea05679e665d468182adc9438 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_b4d46a58bfa4d36a718da9d795f9af52.setIcon(icon_ca782c0ea05679e665d468182adc9438);
+        
+    
+        var popup_e9fb0eb46546df45c46d54fd5f4afc51 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f23466e708ecb4edf28455437fc080b9 = $(`<div id="html_f23466e708ecb4edf28455437fc080b9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Pembroke</h4>             <b>Location:</b> Primrose Hill, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 0207 4832 927<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> NW1 8JA         </div>         </div>`)[0];
+                popup_e9fb0eb46546df45c46d54fd5f4afc51.setContent(html_f23466e708ecb4edf28455437fc080b9);
+            
+        
+
+        marker_b4d46a58bfa4d36a718da9d795f9af52.bindPopup(popup_e9fb0eb46546df45c46d54fd5f4afc51)
+        ;
+
+        
+    
+    
+            var marker_133297f5cea39552f74199be461ed771 = L.marker(
+                [51.487, -0.1909999999999999],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_1982dfdd4fdad0323bdb8ff542607aaa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_133297f5cea39552f74199be461ed771.setIcon(icon_1982dfdd4fdad0323bdb8ff542607aaa);
+        
+    
+        var popup_a00286f46804bc0401a26f0dd42a3f62 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4d45d8b21172989c333ee77caa903fda = $(`<div id="html_4d45d8b21172989c333ee77caa903fda" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Pembroke</h4>             <b>Location:</b> Earls Court, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 020 7373 8337<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> SW5 9JA         </div>         </div>`)[0];
+                popup_a00286f46804bc0401a26f0dd42a3f62.setContent(html_4d45d8b21172989c333ee77caa903fda);
+            
+        
+
+        marker_133297f5cea39552f74199be461ed771.bindPopup(popup_a00286f46804bc0401a26f0dd42a3f62)
+        ;
+
+        
+    
+    
+            var marker_66ec574323a5c470191db5eb503e5b6f = L.marker(
+                [51.453633333333336, -0.0687666666666666],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_2c487d52cc8f81064a3898da858b0280 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_66ec574323a5c470191db5eb503e5b6f.setIcon(icon_2c487d52cc8f81064a3898da858b0280);
+        
+    
+        var popup_b07cca0f130eb0fb766700d27aa24a69 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ab2c9d04f89fc86c9769e3fd23a81970 = $(`<div id="html_ab2c9d04f89fc86c9769e3fd23a81970" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Plough</h4>             <b>Location:</b> East Dulwich, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 8693 4236<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £60<br>             <b>Postal Code:</b> SE22 8JJ         </div>         </div>`)[0];
+                popup_b07cca0f130eb0fb766700d27aa24a69.setContent(html_ab2c9d04f89fc86c9769e3fd23a81970);
+            
+        
+
+        marker_66ec574323a5c470191db5eb503e5b6f.bindPopup(popup_b07cca0f130eb0fb766700d27aa24a69)
+        ;
+
+        
+    
+    
+            var marker_8bd9d224694240c4861b3454398a8adb = L.marker(
+                [51.53669, -0.0944],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_e39586288a5ed455c3b55b396c7b2dc4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8bd9d224694240c4861b3454398a8adb.setIcon(icon_e39586288a5ed455c3b55b396c7b2dc4);
+        
+    
+        var popup_20bb106f1ac798fdc86fe5655facc58b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_edb5c4540b3fc4a6e40f4a355e1b3bcc = $(`<div id="html_edb5c4540b3fc4a6e40f4a355e1b3bcc" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Poet</h4>             <b>Location:</b> Islington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7226 2900<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N1 3DS         </div>         </div>`)[0];
+                popup_20bb106f1ac798fdc86fe5655facc58b.setContent(html_edb5c4540b3fc4a6e40f4a355e1b3bcc);
+            
+        
+
+        marker_8bd9d224694240c4861b3454398a8adb.bindPopup(popup_20bb106f1ac798fdc86fe5655facc58b)
+        ;
+
+        
+    
+    
+            var marker_df3622a151af896f410fdd5979458430 = L.marker(
+                [51.5625, -0.074],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_86cda1a7c04a43835f06e11a93192557 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_df3622a151af896f410fdd5979458430.setIcon(icon_86cda1a7c04a43835f06e11a93192557);
+        
+    
+        var popup_85e5649246c155e0d926e7033f943a30 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3dd281fdc7df3915d1c3224dafe21dd7 = $(`<div id="html_3dd281fdc7df3915d1c3224dafe21dd7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Prince N16</h4>             <b>Location:</b> Stoke Newington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 0207 043 5210<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N16 0EB         </div>         </div>`)[0];
+                popup_85e5649246c155e0d926e7033f943a30.setContent(html_3dd281fdc7df3915d1c3224dafe21dd7);
+            
+        
+
+        marker_df3622a151af896f410fdd5979458430.bindPopup(popup_85e5649246c155e0d926e7033f943a30)
+        ;
+
+        
+    
+    
+            var marker_85bb920b9eed419baf5ae7092717913c = L.marker(
+                [51.469166666666666, -0.1619333333333333],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_f26d84ab08041dcab33828c8a244826f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_85bb920b9eed419baf5ae7092717913c.setIcon(icon_f26d84ab08041dcab33828c8a244826f);
+        
+    
+        var popup_ae674d5147c7d532959ad72030373d8e = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9dc6302ec1d0c163562acadadbe431d9 = $(`<div id="html_9dc6302ec1d0c163562acadadbe431d9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Prince of Wales</h4>             <b>Location:</b> Battersea, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7228 0395<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £20<br>             <b>Postal Code:</b> SW11 3AE         </div>         </div>`)[0];
+                popup_ae674d5147c7d532959ad72030373d8e.setContent(html_9dc6302ec1d0c163562acadadbe431d9);
+            
+        
+
+        marker_85bb920b9eed419baf5ae7092717913c.bindPopup(popup_ae674d5147c7d532959ad72030373d8e)
+        ;
+
+        
+    
+    
+            var marker_fe3c6138944e02a32263a2257cfdd5ae = L.marker(
+                [51.4752, -0.3425],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_adc36eb9af3ff472be964f3b7e2a0691 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_fe3c6138944e02a32263a2257cfdd5ae.setIcon(icon_adc36eb9af3ff472be964f3b7e2a0691);
+        
+    
+        var popup_8e4431ae60a3d7936ce489494c363222 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_d8194e2de7b208585d93c1dd88815bdf = $(`<div id="html_d8194e2de7b208585d93c1dd88815bdf" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Red Lion</h4>             <b>Location:</b> Isleworth, London<br>             <b>Event Time:</b> Thu @ 19:45<br>             <b>Phone:</b> 020 8560 1457<br>             <b>Price:</b> £3.00<br>             <b>Prize:</b> £350<br>             <b>Postal Code:</b> TW7 6QJ         </div>         </div>`)[0];
+                popup_8e4431ae60a3d7936ce489494c363222.setContent(html_d8194e2de7b208585d93c1dd88815bdf);
+            
+        
+
+        marker_fe3c6138944e02a32263a2257cfdd5ae.bindPopup(popup_8e4431ae60a3d7936ce489494c363222)
+        ;
+
+        
+    
+    
+            var marker_1330478144e1f6c0419ac72e61a0ba57 = L.marker(
+                [51.53669, -0.0944],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_3302cf0fc1f4b0dd0defb3025d6f6933 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_1330478144e1f6c0419ac72e61a0ba57.setIcon(icon_3302cf0fc1f4b0dd0defb3025d6f6933);
+        
+    
+        var popup_2e215946e60bdac38b3ec03a09008048 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0ba4a605c5f5b67b36cc8b4c1ef53764 = $(`<div id="html_0ba4a605c5f5b67b36cc8b4c1ef53764" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Regent</h4>             <b>Location:</b> Islington, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 7700 2725<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N1 1LX         </div>         </div>`)[0];
+                popup_2e215946e60bdac38b3ec03a09008048.setContent(html_0ba4a605c5f5b67b36cc8b4c1ef53764);
+            
+        
+
+        marker_1330478144e1f6c0419ac72e61a0ba57.bindPopup(popup_2e215946e60bdac38b3ec03a09008048)
+        ;
+
+        
+    
+    
+            var marker_ee0eb174361e3f937db7a7ec428a98c0 = L.marker(
+                [51.470175, -0.060325],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_ada26fb4356f0dc08287c391c0e4ddcf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_ee0eb174361e3f937db7a7ec428a98c0.setIcon(icon_ada26fb4356f0dc08287c391c0e4ddcf);
+        
+    
+        var popup_f91c90dd5919043befee49604ba33efb = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b37e45c662e8a9b7200270f6ba796fd = $(`<div id="html_4b37e45c662e8a9b7200270f6ba796fd" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Waverley Arms</h4>             <b>Location:</b> Nunhead, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 0207 450 1139<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> SE15 3BU         </div>         </div>`)[0];
+                popup_f91c90dd5919043befee49604ba33efb.setContent(html_4b37e45c662e8a9b7200270f6ba796fd);
+            
+        
+
+        marker_ee0eb174361e3f937db7a7ec428a98c0.bindPopup(popup_f91c90dd5919043befee49604ba33efb)
+        ;
+
+        
+    
+    
+            var marker_ed71a939274266fc626c7712443fd69b = L.marker(
+                [51.6, -0.1167],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_dac41aea1ba600a4fb6d5a1d58990f01 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ed71a939274266fc626c7712443fd69b.setIcon(icon_dac41aea1ba600a4fb6d5a1d58990f01);
+        
+    
+        var popup_c6bd733cd94729ce449d180a303a876a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_69d113bb65cba81b77018c1df2695673 = $(`<div id="html_69d113bb65cba81b77018c1df2695673" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The Westbury</h4>             <b>Location:</b> Wood Green, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 020 8881 1661<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> N22 6SA         </div>         </div>`)[0];
+                popup_c6bd733cd94729ce449d180a303a876a.setContent(html_69d113bb65cba81b77018c1df2695673);
+            
+        
+
+        marker_ed71a939274266fc626c7712443fd69b.bindPopup(popup_c6bd733cd94729ce449d180a303a876a)
+        ;
+
+        
+    
+    
+            var marker_fc27e62f7977a50589aaaeed818a7f4d = L.marker(
+                [51.5085, -0.1257],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_d21f6a7a0ee89e718ba2881b8ac56b91 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_fc27e62f7977a50589aaaeed818a7f4d.setIcon(icon_d21f6a7a0ee89e718ba2881b8ac56b91);
+        
+    
+        var popup_c00f6f5d7835f436bc47ffcde2f0340c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_33cd3fe1bf94d0494658bf9eb90b9bae = $(`<div id="html_33cd3fe1bf94d0494658bf9eb90b9bae" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The White Ferry House</h4>             <b>Location:</b> Pimlico, London<br>             <b>Event Time:</b> Thu @ 19:00<br>             <b>Phone:</b> 020 7233 6133<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £30<br>             <b>Postal Code:</b> SW1V 4LD         </div>         </div>`)[0];
+                popup_c00f6f5d7835f436bc47ffcde2f0340c.setContent(html_33cd3fe1bf94d0494658bf9eb90b9bae);
+            
+        
+
+        marker_fc27e62f7977a50589aaaeed818a7f4d.bindPopup(popup_c00f6f5d7835f436bc47ffcde2f0340c)
+        ;
+
+        
+    
+    
+            var marker_878796da4a78fb896f0b517d1289c59d = L.marker(
+                [51.59148, -0.35392],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_f6615b517ed80ad861f03cec4d1e66e1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_878796da4a78fb896f0b517d1289c59d.setIcon(icon_f6615b517ed80ad861f03cec4d1e66e1);
+        
+    
+        var popup_461d6358bc83e4160cbdd37adad28a4a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5ccb49a676cf8687013e95da5349433c = $(`<div id="html_5ccb49a676cf8687013e95da5349433c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The White Horse</h4>             <b>Location:</b> Harrow on the Hill, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 020 8422 1215<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £0<br>             <b>Postal Code:</b> HA2 0HL         </div>         </div>`)[0];
+                popup_461d6358bc83e4160cbdd37adad28a4a.setContent(html_5ccb49a676cf8687013e95da5349433c);
+            
+        
+
+        marker_878796da4a78fb896f0b517d1289c59d.bindPopup(popup_461d6358bc83e4160cbdd37adad28a4a)
+        ;
+
+        
+    
+    
+            var marker_d17b3c28d4049cb23c6ffe5e9af2a07e = L.marker(
+                [51.5693, -0.1069],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_457beafe073bbf60f5b0b0f158052828 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_d17b3c28d4049cb23c6ffe5e9af2a07e.setIcon(icon_457beafe073bbf60f5b0b0f158052828);
+        
+    
+        var popup_4ecc68f85bc79b0266f0895cf1338444 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_20cd4e841925a97ae3eeb6195a94c493 = $(`<div id="html_20cd4e841925a97ae3eeb6195a94c493" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>The World's End</h4>             <b>Location:</b> Finsbury Park, London<br>             <b>Event Time:</b> Thu @ 19:30<br>             <b>Phone:</b> 020 7281 8679<br>             <b>Price:</b> £2.00<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> N4 3EF         </div>         </div>`)[0];
+                popup_4ecc68f85bc79b0266f0895cf1338444.setContent(html_20cd4e841925a97ae3eeb6195a94c493);
+            
+        
+
+        marker_d17b3c28d4049cb23c6ffe5e9af2a07e.bindPopup(popup_4ecc68f85bc79b0266f0895cf1338444)
+        ;
+
+        
+    
+    
+            var marker_53bc890eb82bcdf599a15258ee3e7161 = L.marker(
+                [51.3359, -0.0778],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_5a4f49e3330ce3619787069064eac4a2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_53bc890eb82bcdf599a15258ee3e7161.setIcon(icon_5a4f49e3330ce3619787069064eac4a2);
+        
+    
+        var popup_2788162fd4fe3fb18662ca5bb42862fa = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_44965765b73fb7fb75bb644cc82fd512 = $(`<div id="html_44965765b73fb7fb75bb644cc82fd512" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Whelans Croydon</h4>             <b>Location:</b> Croydon, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> N/A<br>             <b>Price:</b> £2.50<br>             <b>Prize:</b> £50<br>             <b>Postal Code:</b> CR2 6PW         </div>         </div>`)[0];
+                popup_2788162fd4fe3fb18662ca5bb42862fa.setContent(html_44965765b73fb7fb75bb644cc82fd512);
+            
+        
+
+        marker_53bc890eb82bcdf599a15258ee3e7161.bindPopup(popup_2788162fd4fe3fb18662ca5bb42862fa)
+        ;
+
+        
+    
+    
+            var marker_78768739b07c3a208e7b08778ed3aa60 = L.marker(
+                [51.51302727272727, -0.0617727272727272],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_14c660e51da00aeee13ea47bc34b160c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_78768739b07c3a208e7b08778ed3aa60.setIcon(icon_14c660e51da00aeee13ea47bc34b160c);
+        
+    
+        var popup_897ffe653ae6219e19e69ac3f67f2ef2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_0799b674f4e9167ab9a72e2467d56f0e = $(`<div id="html_0799b674f4e9167ab9a72e2467d56f0e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>White Hart Brew Pub</h4>             <b>Location:</b> Whitechapel, London<br>             <b>Event Time:</b> Thu @ 21:00<br>             <b>Phone:</b> 2077902894<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £40<br>             <b>Postal Code:</b> E1 4TP         </div>         </div>`)[0];
+                popup_897ffe653ae6219e19e69ac3f67f2ef2.setContent(html_0799b674f4e9167ab9a72e2467d56f0e);
+            
+        
+
+        marker_78768739b07c3a208e7b08778ed3aa60.bindPopup(popup_897ffe653ae6219e19e69ac3f67f2ef2)
+        ;
+
+        
+    
+    
+            var marker_15045847ae2a180edd058a5b6beb3e56 = L.marker(
+                [51.4126, -0.2974],
+                {}
+            ).addTo(marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a);
+        
+    
+            var icon_45ba1e6528a45c158a9e6e7ead1abb0f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "beer", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_15045847ae2a180edd058a5b6beb3e56.setIcon(icon_45ba1e6528a45c158a9e6e7ead1abb0f);
+        
+    
+        var popup_b2a07ffda03b901fd051cfcdea90ce0d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bce912fdaa135658bbd2b2f43acb92aa = $(`<div id="html_bce912fdaa135658bbd2b2f43acb92aa" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif;">             <h4>Woody's</h4>             <b>Location:</b> Kingston, London<br>             <b>Event Time:</b> Thu @ 20:00<br>             <b>Phone:</b> 020 8541 4984<br>             <b>Price:</b> £1.00<br>             <b>Prize:</b> £100<br>             <b>Postal Code:</b> KT1 1HH         </div>         </div>`)[0];
+                popup_b2a07ffda03b901fd051cfcdea90ce0d.setContent(html_bce912fdaa135658bbd2b2f43acb92aa);
+            
+        
+
+        marker_15045847ae2a180edd058a5b6beb3e56.bindPopup(popup_b2a07ffda03b901fd051cfcdea90ce0d)
+        ;
+
+        
+    
+    
+            marker_cluster_26587dbcf9dd010d5d7cad5a7e81836a.addTo(map_2994d631c59abe37eee29db837c26bdb);
+        
+</script>
+</html>
